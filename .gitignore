@@ -1,6 +1,6 @@
 .DS_Store
 z.py
 .idea
-*/__pycache__
+**/__pycache__
 
 hz

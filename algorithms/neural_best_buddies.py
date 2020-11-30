@@ -61,7 +61,7 @@ class sparse_semantic_correspondence:
         for i in range(A.size(2)):  # H
             for j in range(A.size(3)):  # W
                 # patch A
-                candidate_patch_A = A_padded[:, :, i:(i + 2 * dx + 1), j:(j + 2 * dy + 1)]
+                candidate_patch_A = A_padded[:, :, i:(i + 2 * dx + 1), j:(j + 2 * dy + 1)]  # 3*3
                 index = self.find_closest_patch_index(  # todo: 并行化
                     B_padded,
                     candidate_patch_A,
@@ -84,7 +84,7 @@ class sparse_semantic_correspondence:
         dx, dy = math.floor(patch_A.size(2) / 2), math.floor(patch_A.size(3) / 2)
         search_dx = search_dy = search_box_radius  # 搜索 radius, 点的半径 所在区域
 
-        # 初始 A(i,j) 对应的 B 区域
+        # 初始 A(i,j) 对应的 B 区域; 最深层二者映射是一样的，到了浅层 i,j 就会变换了
         up_boundary = int(inital_pixel[0] - search_dx) if inital_pixel[0] - search_dx > 0 else 0
         down_boundary = int(inital_pixel[0] + 2 * dx + search_dx + 1) if inital_pixel[0] + 2 * dx + search_dx + 1 < B.size(2) else B.size(2)
         left_boundary = int(inital_pixel[1] - search_dy) if inital_pixel[1] - search_dy > 0 else 0

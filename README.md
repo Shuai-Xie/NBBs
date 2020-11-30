@@ -9,10 +9,13 @@
 
 ## 1. NBBs 特征点匹配
 
-1. 方法背景：特征图高相应位置 暗含 此类物体的特异性特征位置，可作为 A.B 的稀疏结构匹配
+1. 方法背景：特征图高响应位置 包含 此类物体的特异性特征，可作为 A/B 的稀疏结构匹配
 
 <p align="center">
-<img src="assets/teaser.jpg" width="800">
+<span>Neural Best Buddies matched pairs</span><br>
+<img src="assets/teaser.jpg" width="800"><br>
+<span>normalized activation map</span><br>
+<img src="assets/activation_map.png">
 </p>
 
 2. 方法步骤 & 加速

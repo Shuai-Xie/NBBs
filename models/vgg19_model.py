@@ -120,7 +120,7 @@ class vgg19(nn.Module):
         deconvolved_feature.data.fill_(0)
         deconvolved_feature.requires_grad_()  # requires_grad=True
 
-        optimizer = torch.optim.Adam([{'params': deconvolved_feature}],
+        optimizer = torch.optim.Adam([{'params': deconvolved_feature}],  # 只优化 L-1 features 输入，而固定 layer 参数
                                      lr=self.old_lr, betas=(self.beta, 0.999))
         # src feature
         src_feature_size = self.get_layer_size(src_level, batch_size=features.size(0), width=original_image_width)
